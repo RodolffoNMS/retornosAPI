@@ -55,7 +55,7 @@ public class ProductService {
     public List<Product> getAllProducts() {
         return repository.findAll().stream()
                 .map(this::mapToProduct)
-                .collect(Collectors.toList()); 
+                .collect(Collectors.toList());
     }
 
     public Product getProductById(Long id) {
@@ -82,13 +82,8 @@ public class ProductService {
             throw new IllegalArgumentException("A quantidade em estoque deve ser maior ou igual a 0.");
         }
 
-        if (product.category() == null || product.category().isBlank()) {
+        if (product.category() == null) {
             throw new IllegalArgumentException("A categoria do produto é obrigatória.");
-        }
-
-        List<String> validCategories = List.of("Eletrônicos", "Roupas", "Alimentos");
-        if (!validCategories.contains(product.category())) {
-            throw new IllegalArgumentException("Categoria inválida. As categorias válidas são: " + validCategories);
         }
     }
 

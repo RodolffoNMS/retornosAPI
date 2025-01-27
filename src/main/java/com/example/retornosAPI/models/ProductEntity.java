@@ -30,14 +30,14 @@ public class ProductEntity {
     @Min(value = 0, message = "O estoque deve ser sempre positivo.")
     private Double stockQuantity;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    @NotBlank(message = "A categoria do produto é obrigatória")
-    private String category;
+    private Category category;
 
     public ProductEntity() {
     }
 
-    public ProductEntity(Long id, String name, String description, Double price, Double stockQuantity, String category) {
+    public ProductEntity(Long id, String name, String description, Double price, Double stockQuantity, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -86,11 +86,11 @@ public class ProductEntity {
         this.stockQuantity = stockQuantity;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 }

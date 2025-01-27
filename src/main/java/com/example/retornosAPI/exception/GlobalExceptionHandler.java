@@ -26,8 +26,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<Map<String, Object>> handleProductNotFoundException(ProductNotFoundException ex, WebRequest request) {
+    @ExceptionHandler(RuntimeException .class)
+    public ResponseEntity<Map<String, Object>> handleProductNotFoundException(RuntimeException  ex, WebRequest request) {
         Map<String, Object> map = new HashMap<>();
         map.put("timestamp", LocalDateTime.now());
         map.put("status", HttpStatus.NOT_FOUND.value());
